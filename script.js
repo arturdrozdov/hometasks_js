@@ -32,11 +32,10 @@ const weeksAmount = 8;
 
 let weeksAmountPaperCount = consumptionPerWeek * weeksAmount;
 console.log(weeksAmountPaperCount + ` - листов за ${weeksAmount} недель`);
-let totalCount = weeksAmountPaperCount / sheetsInReamPaper;
-if (totalCount % 1 !== 0)
-    console.log(parseInt(totalCount += 1) + ' - пачек бумаги');
-else
-    console.log(totalCount + ' - пачек бумаги');
+let totalCount = weeksAmountPaperCount - (weeksAmountPaperCount % sheetsInReamPaper);
+totalCount = (totalCount / sheetsInReamPaper)+1;
+console.log(totalCount + ' - пачек бумаги');
+
 
     //-------------------#4------------------------
 console.log('-------------#4----------------');
@@ -50,18 +49,16 @@ let floor;
 
 function searchHouse(roomsOnFloor, floors, roomNumber) {
 
-    porch = roomNumber / (floors * roomsOnFloor);
-    if (porch % 1 !== 0)
-        console.log(parseInt(porch += 1) + ' - подъезд');
-    else
-        console.log(porch + ' - подъезд');
+    let roomsInPorch = floors * roomsOnFloor;
 
-    floor = (roomNumber % (floors * roomsOnFloor)) / roomsOnFloor;
-    if (floor % 1 !== 0)
-        console.log(parseInt(floor += 1) + ' - этаж');
-    else
-        console.log(floor + '- этаж');
+    porch = roomNumber - (roomNumber % roomsInPorch);
+    porch = (porch / roomsInPorch)+1;
+    console.log(porch + ' - подъезд');
 
+    floor = (roomNumber % roomsInPorch)-(roomNumber % roomsInPorch) % roomsOnFloor;
+    floor = (floor / roomsOnFloor)+1;
+    console.log(floor + ' - этаж');
+    
 }
 searchHouse(roomsOnFloor, floors, roomNumber);
 
