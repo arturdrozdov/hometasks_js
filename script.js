@@ -42,7 +42,7 @@ class Student {
                     }
                 }
             }());
-            
+
         Student.arrOfStudents.push(this);
         Student.arrOfStudents.sort(function (a, b) {
             if (a.ratingPoint === b.ratingPoint) {
@@ -81,7 +81,7 @@ class CustomString {
 
     reverse(str) {
         this.str = str;
-        let arrA = [...str]
+        let arrA = [...str];
         let arrB = [];
         for (let i = arrA.length - 1; i >= 0; i--) {
             arrB.push(arrA[i]);
@@ -111,3 +111,57 @@ const myString = new CustomString();
 myString.reverse('qwerty'); //выведет 'ytrewq'
 myString.ucFirst('qwerty'); //выведет 'Qwerty'
 myString.ucWords('qwerty qwerty qwerty'); //выведет 'Qwerty Qwerty Qwerty
+
+
+//====================================#3=====================================
+
+class Validator {
+    constructor() {
+
+    }
+
+    checkIsEmail(str) {
+        this.str = str;
+        return console.log(str.includes('@gmail.com'));
+
+    }
+
+    checkIsDomain(str) {
+        this.str = str;
+        if (!str.includes('@')) {                   //вроде в доменах не должно быть собачки, если есть тогда не домен...
+            return console.log(str.includes('.com', str.length - 4));
+        } else
+            return console.log(false);
+    }
+
+    checkIsDate(str) {
+        this.str = str;
+        if (str.split('.')) {                       //не знал как правильно сделал валидацию только по точке
+            let arr = [];
+            arr = str.split('.');
+            if (arr.length < 4 && arr[0] <= 31 && arr[1] <= 12 && arr[2] <= new Date().getFullYear()) {
+                return console.log(true);
+            }
+        else return console.log(false);
+        }
+        return console.log(false);
+    }
+
+    checkIsPhone(str){
+        this.str=str;
+        if(str.substring(0, 3)==='+38'){
+            return console.log(true)
+        }else return console.log(false)
+    }
+
+
+
+}
+
+var validator = new Validator();
+
+validator.checkIsEmail('vasya.pupkin@gmail.com'); // true
+validator.checkIsDomain('google.com'); // true
+validator.checkIsDate('30.11.2019'); // true
+validator.checkIsPhone('+38 (066) 937-99-92'); // если код страны Украинский, то возвращаем true иначе false
+
