@@ -56,28 +56,22 @@ const getTime = (() => {
 
 //==============================#4=====================
 
-const timer = (() => {
-
-    let seconds = 0;
-    return (time) => setInterval(function () {
-
-
+let timer = function time(time) {
+    let counter = setInterval(count, 1000);
+    function count() {
         if (time == 0) {
-            clearInterval(timer);
-            console.log("the end");
-            
+            clearInterval(counter);
+            return console.log("the end");
         } else {
-    
-            seconds = time--;
-            console.log(seconds)
+            let min = Math.floor(time / 60)
+            let sec = time % 60
+            if (time > 0) {
+                time--;                
+                sec = sec < 10 ? `0${sec}` : sec;
+                min = min < 10 ? `0${min}` : min;                
+                console.log(`${min}:${sec}`);
+            }
         }
-    
-    
-    }, 1000)
-    })()
-
-    timer(6)
-
-
-
-
+    }
+}
+timer(65);
