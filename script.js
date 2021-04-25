@@ -62,7 +62,7 @@ const timer = (() => {
     return (time) => setInterval(function () {
 
 
-        if (time <= 0) {
+        if (time = 0) {
             clearInterval(timer);
             console.log("the end");
             
