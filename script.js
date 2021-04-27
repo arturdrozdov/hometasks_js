@@ -48,7 +48,7 @@ const getTime = (() => {
             time = new Date().getTime();
         }
         let currTime = new Date().getTime();
-        let resultTime = (a - time) / 1000;
+        let resultTime = (currTime - time) / 1000;
         return Math.round(resultTime);
 
     }
