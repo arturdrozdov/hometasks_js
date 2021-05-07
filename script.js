@@ -126,3 +126,24 @@ Array.prototype.myReduce = function(callBack, accum){
     return console.log(accum);
 
 };
+
+Array.prototype.myJoin = function (separator) {
+    resStr = '';
+    for (i = 0; i < this.length; i++) {
+        if (separator === undefined) {
+
+            if (i === this.length - 1) {
+                resStr += `${this[i]}`;
+                return resStr;
+            }
+            resStr += `${this[i]},`;
+
+        } else {
+            if (i === this.length - 1) {
+                resStr += `${this[i]}`;
+                return resStr;
+            }
+            resStr += `${this[i]}${separator}`;
+        }
+    }
+};
