@@ -110,3 +110,19 @@ function getCondidatesByGender(gend) {
     let res = condidateArr.filter(condid => condid.gender === gend)
     console.log(res);
 }
+
+//----------------------------------------#10----------------------------------
+
+Array.prototype.myReduce = function(callBack, accum){
+
+    let i = 0;
+    if (accum === undefined) {
+        accum = this[0];
+        i = 1;
+    }
+    for (i; i < this.length; i++) {
+        accum = callBack(accum, this[i], i, this);
+    }
+    return console.log(accum);
+
+};
